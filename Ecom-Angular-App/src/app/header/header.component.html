@@ -1,0 +1,78 @@
+<mat-toolbar color="primary">
+  <span>
+    Ecommerce App
+  </span>
+  <span class="space-button"></span> <!--  to move login logout to the right end -->
+<button *ngIf="!( isLoggedIn())" routerLink="/login" mat-raised-button color="primary">
+  Login
+</button>
+<button *ngIf="( isLoggedIn())" (click)="logout()" mat-raised-button color="warn">
+  Logout
+</button>
+</mat-toolbar>
+
+<mat-toolbar *ngIf="isLoggedIn()" color="primary">
+  <button routerLink="/" mat-raised-button color="primary">
+    Home
+  </button>
+  <button *ngIf="!isAdmin()" routerLink="/cart" mat-raised-button color="primary">
+    Cart
+  </button>
+
+  <button *ngIf="!isAdmin()" routerLink="/myOrders" mat-raised-button color="primary">
+    My Orders
+  </button>
+
+  <button  *ngIf= "isAdmin()"  routerLink="/addNewProduct" mat-raised-button color="primary">
+    Add New Product
+  </button>
+
+  <button  *ngIf= "isAdmin()"  routerLink="/showProductDetails" mat-raised-button color="primary">
+    Show Product Details
+  </button>
+
+  <button  *ngIf= "isAdmin()"  routerLink="/orderInformation" mat-raised-button color="primary">
+    Order Info
+  </button>
+</mat-toolbar>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+      to get nav bar, type bootstrap in google, click on the first link, go to docs, under docs click on component then nav bar. Copy the example and alter as per needs
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <div class="container-fluid" >
+      <a class="navbar-brand" href="#">Ecom Application</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a  class="nav-link active" aria-current="page" [routerLink]="['/home']" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="userService.roleMatch(['Admin'])" class="nav-link active" aria-current="page" routerLink="/admin">AdminDashboard</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="userService.roleMatch(['User'])" class="nav-link active" aria-current="page" routerLink="/user">UserDashboard</a>
+          here userService.roleMatch is directly used, it is accessable because in the constructor
+           its set as public. Alternate way could be to create a function in ts file as we did for "isLoggedIn" -->
+          <!-- </li>
+            
+        </ul>
+        <button *ngIf="!( isLoggedIn())" type="button"   class="btn btn-success" routerLink="/login">Login</button>
+        <button *ngIf="isLoggedIn()" type="button"  class="btn btn-danger" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </nav>
+  -->
